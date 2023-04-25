@@ -35,6 +35,23 @@ The report is sorted by risk, so administrators will be able to easily discern t
 #>
 ```
 
+## Requirements
+The Microsoft Graph PowerShell module, and sufficient permissions to run the queries are required.
+The first time Microsoft Graph requests the necessary permissions, a Global Administrator must grant the permissions request on behalf of the tenant.
+
+### Required Permissions
+```
+Reports.Read.All
+Group.Read.All
+GroupMember.Read.All
+User.Read.All
+```
+### Graph Modules Used
+```
+Microsoft.Graph.Reports
+Microsoft.Graph.Groups
+```
+
 ## Using the Module
 ```pwsh
 PS C:\> git clone 'https://github.com/soteria-security/Invoke-MFAMethodsReport.git'
