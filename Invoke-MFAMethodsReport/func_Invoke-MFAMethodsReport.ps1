@@ -35,8 +35,7 @@ Function Execute-GenerateMFAMethodsReport {
         [string] $reportType = "CSV",
         [Parameter(Mandatory = $false,
             HelpMessage = "Filter Output for Specific Risk")]
-        [ValidateSet("All", "Critical", "High", "Medium", "Low",
-            IgnoreCase = $true)]
+        [ValidateSet("Critical", "High", "Medium", "Low")]
         [string[]] $riskLevel
     )
 
@@ -99,7 +98,7 @@ Function Execute-GenerateMFAMethodsReport {
                         Risk              = $Risk
                     }
 
-                    If ($riskLevel -eq 'All') {
+                    If ($null -eq $riskLevel) {
                         $results += $result
                     }
                     Else {
@@ -164,7 +163,7 @@ Function Execute-GenerateMFAMethodsReport {
                             Risk              = $Risk
                         }
 
-                        If ($riskLevel -eq 'All') {
+                        If ($null -eq $riskLevel) {
                             $results += $result
                         }
                         Else {
