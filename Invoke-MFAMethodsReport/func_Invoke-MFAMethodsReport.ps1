@@ -32,7 +32,12 @@ Function Execute-GenerateMFAMethodsReport {
             HelpMessage = "Report Output Format")]
         [ValidateSet("CSV", "XML", "JSON", "None",
             IgnoreCase = $true)]
-        [string] $reportType = "CSV"
+        [string] $reportType = "CSV",
+        [Parameter(Mandatory = $false,
+            HelpMessage = "Filter Output for Specific Risk")]
+        [ValidateSet("All", "Critical", "High", "Medium", "Low",
+            IgnoreCase = $true)]
+        [string[]] $riskLevel
     )
 
     #Requires -Modules "Microsoft.Graph.Reports"
@@ -94,7 +99,14 @@ Function Execute-GenerateMFAMethodsReport {
                         Risk              = $Risk
                     }
 
-                    $results += $result
+                    If ($riskLevel -eq 'All') {
+                        $results += $result
+                    }
+                    Else {
+                        Foreach ($value in $riskLevel) {
+                            $results += ($result | Where-Object { $_.Risk -eq $value })
+                        }
+                    }
                 }
                 
                 $global:sortedResults += $results | Sort-Object { Switch -Regex ($_.Risk) { 'Critical' { 1 }	'High' { 2 }	'Medium' { 3 }	'Low' { 4 } } }   
@@ -152,7 +164,14 @@ Function Execute-GenerateMFAMethodsReport {
                             Risk              = $Risk
                         }
 
-                        $results += $result
+                        If ($riskLevel -eq 'All') {
+                            $results += $result
+                        }
+                        Else {
+                            Foreach ($value in $riskLevel) {
+                                $results += ($result | Where-Object { $_.Risk -eq $value })
+                            }
+                        }
                     }
                 }
                 

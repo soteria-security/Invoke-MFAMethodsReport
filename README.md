@@ -6,7 +6,7 @@ Invoke-MFAMethodsReport was created to give administrators a quick and easy way 
 The report is sorted by risk, so administrators will be able to easily discern the most at risk users based on their MFA configuration, including if the user is registered, if they hold an administrative role in the tenant, all registered methods, and the user selected default method used to authenticate the user.
 
 ## To-Do List
-* Allow filtering by risk to only output desired risk ratings
+* ~~Allow filtering by risk to only output desired risk ratings~~
 * Additional report output formats
 
 ## Module Help
@@ -45,9 +45,15 @@ The module can be installed by copying the Invoke-MFAMethodsReport folder and it
 
 ## Generating the Report
 ```pwsh
+# Return full set of results
 PS C:\> Execute-GenerateMFAMethodsReport -ReportScope All -reportType CSV
        # or
 PS C:\> Execute-GenerateMFAMethodsReport -ReportScope Group -reportType JSON
+
+# Return filtered risks only
+PS C:\> Execute-GenerateMFAMethodsReport -ReportScope All -reportType None -riskLevel Critical
+       # or
+PS C:\> Execute-GenerateMFAMethodsReport -ReportScope All -reportType None -riskLevel Critical, High
 ```
 ## Output Examples
 ### Stdout
