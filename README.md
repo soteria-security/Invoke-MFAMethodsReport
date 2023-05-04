@@ -2,7 +2,7 @@
 PowerShell module that generates a risk-based report of user mutli-factor authentication registration methods.
 
 ## Purpose
-Invoke-MFAMethodsReport was created to give administrators a quick and easy way to generate risk-based report of user mutli-factor authentication registration methods.
+Invoke-MFAMethodsReport was created to give administrators a quick and easy way to generate risk-based report of user multi-factor authentication registration methods.
 The report is sorted by risk, so administrators will be able to easily discern the most at risk users based on their MFA configuration, including if the user is registered, if they hold an administrative role in the tenant, all registered methods, and the user selected default method used to authenticate the user.
 
 ## To-Do List
