@@ -7,7 +7,7 @@ The report is sorted by risk, so administrators will be able to easily discern t
 
 ## To-Do List
 * ~~Allow filtering by risk to only output desired risk ratings~~
-* Additional report output formats
+* ~~Additional report output formats~~
 
 ## Module Help
 ```pwsh
@@ -19,7 +19,7 @@ The report is sorted by risk, so administrators will be able to easily discern t
 .PARAMETER ReportScope
     Scope of the report. Options are All or Group.
 .PARAMETER ReportType
-    Desired Report Format. Options are CSV, XML, JSON, or None.
+    Desired Report Format. Options are CSV, XML, JSON, HTML, or None.
 .PARAMETER TargetGroup
     Only required when the ReportScope is Group. Takes the group DisplayName property and gathers the multi-factor registration info for all members.
 .EXAMPLE
@@ -66,6 +66,8 @@ The module can be installed by copying the Invoke-MFAMethodsReport folder and it
 PS C:\> Execute-GenerateMFAMethodsReport -ReportScope All -reportType CSV
        # or
 PS C:\> Execute-GenerateMFAMethodsReport -ReportScope Group -reportType JSON
+       # or
+PS C:\> Execute-GenerateMFAMethodsReport -ReportScope Group -reportType HTML
 
 # Return filtered risks only
 PS C:\> Execute-GenerateMFAMethodsReport -ReportScope All -reportType None -riskLevel Critical
